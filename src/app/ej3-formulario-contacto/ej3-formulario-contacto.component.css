@@ -1,0 +1,12 @@
+.is-invalid {
+  border-color: red;
+}
+
+.modal {
+  display: none; /* El modal está oculto por defecto */
+  /* Agrega cualquier otro estilo necesario para el modal */
+}
+
+.modal.show {
+  display: block; /* Muestra el modal cuando tiene la clase 'show' */
+}

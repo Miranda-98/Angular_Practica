@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <form [formGroup]="formulario">
+
+    <label for="nombre">Introduce tu nombre:</label><br/>
+    <input type="text" id="nombre" formControlName="nombre" [ngClass]="{ 'is-invalid': formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched }"><br/>
+    <p *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched">
+      <span style="color: red">Nombre no válido, solo caracteres alfabéticos.</span>
+    </p>
+
+    <label for="email">Introduce tu correo electrónico:</label><br/>
+    <input type="email" id="email" formControlName="email" [ngClass]="{ 'is-invalid': formulario.get('email')?.invalid && formulario.get('email')?.touched }"><br/>
+    <p *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched">
+      <span style="color: red">Email no válido.</span>
+    </p>
+
+    <label for="mensaje">Introduce tu mensaje:</label><br/>
+    <textarea id="mensaje" rows="10" cols="70" formControlName="mensaje" [ngClass]="{ 'is-invalid': formulario.get('mensaje')?.invalid && formulario.get('mensaje')?.touched }"></textarea><br/>
+    <p *ngIf="formulario.get('mensaje')?.invalid && formulario.get('mensaje')?.touched">
+      <span style="color: red">Mensaje no válido, el mensaje debe tener entre 5 y 80 caracteres.</span>
+    </p>
+
+    <input type="submit" id="enviar" value="Enviar" [disabled]="formulario.invalid" (click)="enviarFormulario()">
+
+  </form>
+
+  <a [routerLink]="['/']">Volver</a>
+
+</div>
+
+<div class="modal" *ngIf="modalVisible" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Mensaje enviado con éxito</h5>
+        <button type="button" class="close" (click)="cerrarModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¡Tu mensaje ha sido enviado con éxito!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<form [formGroup]="formulario">
+  <label for="nombre">Introduce tu nombre</label>
+  <input type="text" id="nombre" formControlName="nombreInput" [(ngModel)]="nombre">
+  <input type="button" id="enviar" value="Enviar" [disabled]="formulario.invalid" (click)="saludar()">
+</form>
+<!-- si mensajeSaludo == true, osea tiene valor, muestra la etiqueta, si no no -->
+<p *ngIf="mensajeSaludo">Saludos: {{ mensajeSaludo }} !</p>
+<p> Nombre en tiempo real usando ngModel -> {{ nombre }}</p>
+<a [routerLink]="['/']">Volver</a>
+

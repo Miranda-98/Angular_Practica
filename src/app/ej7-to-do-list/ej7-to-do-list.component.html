@@ -1,0 +1,21 @@
+<form [formGroup]="formToDo">
+  <input id="tarea" type="text" placeholder="Introduce tarea" formControlName="tarea" class="tarea"><br/>
+  <button id="agregar" [disabled]="formToDo.invalid" (click)="agregar()">Agregar Tarea</button>
+  <button id="eliminar" [disabled]="!hayTareasSeleccionadas()" (click)="eliminar()">Eliminar Tarea</button>
+</form>
+
+
+<table>
+  <!-- <tr>
+    <td>tarea</td>
+    <td>Eliminar</td>
+  </tr> -->
+  <tr *ngFor="let tarea of listaTareas; let i = index">
+    <td>{{ tarea }}</td><td style="width: 80px;"></td>
+    <td><input type="checkbox" id="listCheck" name="tareaSeleccionada" (change)="actualizarTareasSeleccionadas($event, i)"></td>
+  </tr>
+</table>
+
+
+<br/>
+<a [routerLink]="['/']" >Volver</a>
